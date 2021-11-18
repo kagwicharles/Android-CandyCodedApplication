@@ -8,6 +8,7 @@ import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
@@ -46,5 +47,14 @@ public class InfoActivity extends AppCompatActivity {
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null)
             startActivity(mapIntent);
+    }
+
+    public void createPhoneIntent(View view) {
+        Uri uri = Uri.parse("tel:0123456789");
+        Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+        phoneIntent.setData(uri);
+        if (phoneIntent.resolveActivity(getPackageManager()) != null)
+            startActivity(phoneIntent);
+
     }
 }
